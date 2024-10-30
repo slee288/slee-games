@@ -1,9 +1,14 @@
-<div class="p-16">
-   <div class="dice-wrapper flex gap-x-4 pb-4">
-      <app-dice *ngFor="let dice of dices" [value]="dice.value"></app-dice>
+<div class="py-8 px-16 grid grid-flow-col gap-x-24 auto-cols-max">
+   <div class="dice-section">
+      <div class="dice-wrapper flex gap-x-4 pb-4">
+         <app-dice *ngFor="let dice of dices" [value]="dice.value"></app-dice>
+      </div>
+      <button 
+         class="bg-white border-black border-2 rounded-lg py-2 px-4 text-lg"
+         (click)="rollDice($event)"
+      >Roll</button>
    </div>
-   <button 
-      class="bg-white border-black border-2 rounded-lg py-2 px-4 text-lg"
-      (click)="rollDice($event)"
-   >Roll</button>
+   <div class="map-section">
+      <app-board></app-board>
+   </div>
 </div>

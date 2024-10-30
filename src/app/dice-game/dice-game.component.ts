@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DiceComponent } from '../dice/dice.component';
 import { Dice } from '../dice/dice';
+import { BoardComponent } from '../board/board.component';
 
 const DICE_VALUES = [
   "one", "two", "three", "four", "five", "six"
@@ -10,7 +11,11 @@ const DICE_VALUES = [
 @Component({
   selector: 'app-dice-game',
   standalone: true,
-  imports: [CommonModule, DiceComponent],
+  imports: [
+    CommonModule, 
+    DiceComponent,
+    BoardComponent
+  ],
   templateUrl: './dice-game.component.html',
   styleUrl: './dice-game.component.css'
 })
