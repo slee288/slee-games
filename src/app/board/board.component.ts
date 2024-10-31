@@ -15,7 +15,7 @@ export class BoardComponent {
   moveDice(): Promise<number> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.playerPosition += 1;
+        this.playerPosition = (this.playerPosition + 1) % 28; // round robin for position
         this.diceMove -= 1;
         resolve(this.diceMove);
       }, 400);
@@ -28,6 +28,7 @@ export class BoardComponent {
       // untoggle the previous position, toggle the current position
       const boardSpaces = this.board?.nativeElement.getElementsByClassName("playspace");
       if(boardSpaces) {
+        console.log(this.playerPosition);
         const prevPosition = (this.playerPosition + 27) % 28;
         boardSpaces[prevPosition].classList.remove("on-board");
         boardSpaces[this.playerPosition].classList.add("on-board");
