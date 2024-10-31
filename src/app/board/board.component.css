@@ -1,3 +1,14 @@
 .playspace {
     position: relative;
 }
+.playspace.on-board::after {
+    content: "";
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background-color: blue;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}

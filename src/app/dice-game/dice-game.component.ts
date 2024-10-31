@@ -21,17 +21,36 @@ const DICE_VALUES = [
 })
 export class DiceGameComponent {
   dices: Dice[] = [
-    { id: 1, value: "four" },
-    { id: 2, value: "three" }
-  ]
+    { id: 1, value: 4 },
+    { id: 2, value: 3 }
+  ];
+  diceMove: number = 0;
 
-  rollDice(evt: MouseEvent): void {
+  getDiceValue(): Promise<Dice[]> {
     const randomizeDice = setInterval(() => {
       this.dices = this.dices.map(({ ...dice }) => {
-        return { ...dice, value: DICE_VALUES[Math.floor(Math.random() * 6)] }
+        return { ...dice, value: Math.ceil(Math.random() * 6) }
       })
     }, 100);
 
-    setTimeout(() => clearInterval(randomizeDice), 2500);
+    setTimeout(() => {
+      clearInterval(randomizeDice);
+      return this.dices;
+    }, 2500);
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        clearInterval(randomizeDice);
+        resolve(this.dices);
+      }, 2500);
+    })
+  }
+
+  async rollDice(evt: MouseEvent): Promise<void> {
+    const diceValues = await this.getDiceValue();
+    const totalValue = diceValues.reduce(
+      (accum: number, { value }: { value: number }) => accum + value, 0
+    );
+    this.diceMove = totalValue;
   }
 }

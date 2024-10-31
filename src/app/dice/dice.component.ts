@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Dice } from './dice';
+
+const DICE_VALUES = [
+  "one", "two", "three", "four", "five", "six"
+]
 
 @Component({
   selector: 'app-dice',
@@ -9,5 +12,10 @@ import { Dice } from './dice';
   styleUrl: './dice.component.css'
 })
 export class DiceComponent {
-  @Input() value: string = ""
+  @Input() value: number = 1;
+  diceValue: string = "one";
+
+  ngOnInit() {
+    this.diceValue = DICE_VALUES[this.value - 1];
+  }
 }
