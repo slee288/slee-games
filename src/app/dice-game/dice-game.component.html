@@ -1,14 +1,28 @@
 <div class="py-8 px-16 grid grid-flow-col gap-x-24 auto-cols-max">
-   <div class="dice-section">
-      <div class="dice-wrapper flex gap-x-4 pb-4">
-         <app-dice *ngFor="let dice of dices" [value]="dice.value"></app-dice>
+   <div class="left-panel grid grid-flow-row gap-y-24 auto-rows-max">
+      <div class="dice-section">
+         <div class="dice-wrapper flex gap-x-4 pb-4">
+            <app-dice *ngFor="let dice of dices" [value]="dice.value"></app-dice>
+         </div>
+         <button 
+            class="bg-white border-black border-2 rounded-lg py-2 px-4 text-lg disabled:opacity-40"
+            (click)="rollDice($event)"
+            [disabled]="isRolling"
+         >Roll</button>
       </div>
-      <button 
-         class="bg-white border-black border-2 rounded-lg py-2 px-4 text-lg"
-         (click)="rollDice($event)"
-      >Roll</button>
+      <div class="player-info">
+         <button 
+            class="bg-white border-black border-2 rounded-lg py-2 px-4 text-lg disabled:opacity-40"
+            (click)="addPlayer($event)"
+            [disabled]="players.length >= 2"
+         >+ Add Player</button>
+         <ul>
+            <li *ngFor="let player of players; index as i">Player {{ i }}</li>
+         </ul>
+      </div>
    </div>
    <div class="map-section">
       <app-board [diceMove]="diceMove"></app-board>
+      <app-player *ngFor="let player of players"></app-player>
    </div>
 </div>
