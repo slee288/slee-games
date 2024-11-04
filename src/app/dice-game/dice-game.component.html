@@ -22,7 +22,6 @@
       </div>
    </div>
    <div class="map-section">
-      <app-board [diceMove]="diceMove"></app-board>
-      <app-player *ngFor="let player of players"></app-player>
+      <app-board [diceMove]="diceMove" [players]="players"></app-board>
    </div>
 </div>

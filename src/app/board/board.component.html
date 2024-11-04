@@ -1,4 +1,4 @@
-<div #board class="relative grid grid-rows-8 grid-cols-8 rounded-xl overflow-hidden border-black border">
+<div #board class="grid grid-rows-8 grid-cols-8 rounded-xl overflow-hidden border-black border">
     <!-- top -->
     <div class="playspace rounded-tl-xl w-28 h-28 bg-white border-black border"></div>
     <div class="playspace w-28 h-28 bg-white border-black border"></div>
@@ -33,4 +33,7 @@
     <div class="playspace w-28 h-28 bg-white border-black border row-start-2 row-end-3 col-start-1 col-end-2"></div>
     <!-- center -->
     <div class="border border-black row-start-2 row-end-8 col-start-2 col-end-8"></div>
+
+    <!-- player instances -->
+    <app-player *ngFor="let player of players" [board]="board" [move]="diceMove"></app-player>
  </div>

@@ -6,10 +6,6 @@ import { BoardComponent } from '../board/board.component';
 import { PlayerComponent } from '../player/player.component';
 import { Player } from '../player/player';
 
-const DICE_VALUES = [
-  "one", "two", "three", "four", "five", "six"
-]
-
 @Component({
   selector: 'app-dice-game',
   standalone: true,
@@ -32,7 +28,6 @@ export class DiceGameComponent {
   isRolling: boolean = false;
 
   ngOnInit() {
-    this.players.push(new Player());
     this.players.push(new Player());
   }
 
